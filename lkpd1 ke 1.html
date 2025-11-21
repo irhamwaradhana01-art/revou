@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilai Rata-rata dan Grade</title>
+</head>
+<body>
+    
+    <h2>Hitung Rata-rata Nilai dan Tentukan Grade</h2>
+    
+    <label for="pabp">PABP:</LABEL>
+    <input type="number" id="pabp" value="70">
+    <br> 
+    <label for="mtk">MTK:</label> 
+    <input type="number" id="mtk" value="82">
+    <br>
+    <label for="dpk">DPK:</label>
+    <input type="number" id="dpk" value="77">
+    <br>
+    
+    <button onclick="hitungRataRata()">Cari Rata-rata</button>
+    
+    <div id="hasil">Hasil:</div>
+    
+    
+    <script>
+    // Perbaikan 2: Mengganti nama fungsi menjadi hitungRataRata
+    function hitungRataRata() { 
+        // 1. Ambil nilai input dan konversi ke angka
+        let pabp = parseFloat(document.getElementById('pabp').value) || 0;
+        let mtk  = parseFloat(document.getElementById('mtk').value) || 0;
+        let dpk  = parseFloat(document.getElementById('dpk').value) || 0;
+        
+        
+        // 2. hitung ratarata 
+        let rata_rata = (pabp + mtk + dpk) / 3;
+        // Membulatkan rata-rata ke 2 angka desimal agar lebih rapi
+        let rata_rata_bersih = rata_rata.toFixed(2);
+        let grade;
+
+        // 3. Tentukan grade berdasarkan kriteria
+        if (rata_rata >= 80 && rata_rata <= 100) {
+            grade = "*A* (Sangat Baik)";
+        } else if (rata_rata >= 75 && rata_rata < 80) {
+            grade = "*B* (Baik)";
+        } else if (rata_rata >= 65 && rata_rata < 75) {
+            grade = "*C* (Cukup)";
+        } else if (rata_rata >= 45 && rata_rata < 65) {
+            grade = "*D* (Kurang)";
+        } else if (rata_rata >= 0 && rata_rata < 45) {
+            grade = "*E* (Sangat Kurang)";
+        } else {
+            grade = "*K* (Nilai Tidak Valid)";
+        }
+
+        // 4. Tampilkan hasil (Perbaikan 4 & 5)
+        document.getElementById('hasil').innerHTML = 
+            `*Hasil:*<br>
+            Rata-rata Nilai: *${rata_rata_bersih}*<br>
+            Grade Anda: ${grade}`;
+    }
+    </script>
+    
+    <p> 
+    Nama: m irham waradhana<br>
+    Rombel: pplg x 1<br>
+    Rayon: ciawi 1
+    </p>
+</body>
+</html>
