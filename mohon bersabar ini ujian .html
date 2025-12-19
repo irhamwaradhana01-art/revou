@@ -1,0 +1,58 @@
+z<!DOCTYPE html>
+<html>
+<head>
+<title>mohon bersabar ini ujian</title>
+<meta charset="UTF-8">
+</head>
+<body>
+
+<script>
+let harga_perbuku = 5000; 
+let jumlahPembeli = parseFloat(prompt("Masukkan jumlah pembeli:"));
+
+let totalPendapatanSeluruhnya = 0;
+let hitungDiskonKecil = 0;
+let hitungDiskonBesar = 0;
+
+console.log("===== transaksi =====");
+
+for (let i = 1; i <= jumlahPembeli; i++) {
+    let jumlahBuku = parseFloat(prompt("Masukkan jumlah buku pembeli ke-" + i + ":"));
+    let hargaAkhir = 0;
+
+    
+    if (jumlahBuku <= 100){
+        hargaAkhir = jumlahBuku * harga_perbuku;
+    }
+    else if (jumlahBuku <= 200){
+        let hitungseratuspertama = 100 * harga_perbuku *0.95;
+        let hitungsisa = (jumlahBuku - 100) * harga_perbuku * 0.85;
+        hargaAkhir = hitungseratuspertama + hitungsisa;
+        hitungDiskonKecil++;
+        
+} else {
+	let seratuspertama = 100 * harga_perbuku * 0.93;
+	let seratuskedua = 100 * harga_perbuku * 0.83;
+	let sisaBuku = (jumlahBuku - 200) * harga_perbuku * 0.73;
+	hargaAkhir = seratuspertama + seratuskedua + sisaBuku;
+	hitungDiskonBesar++; 
+}
+ 
+    totalPendapatanSeluruhnya += hargaAkhir;
+
+    console.log("Pembeli ke-" + i);
+    console.log(" > Jumlah Buku: " + jumlahBuku);
+    console.log(" > Total Harga: Rp " + hargaAkhir);
+    console.log("-----------------------------");
+}
+let rataRata = jumlahPembeli > 0 ? totalPendapatanSeluruhnya / jumlahPembeli : 0;
+  
+console.log("=========rekapan==========")
+console.log("Total Pendapatan     : Rp " + totalPendapatanSeluruhnya);
+console.log("Rata-rata/Pembeli    : Rp " + rataRata);
+console.log("Pembeli Diskon Kecil : " + hitungDiskonKecil + " orang");
+console.log("Pembeli Diskon Besar : " + hitungDiskonBesar + " orang");
+
+</script
+</body>
+</html>
