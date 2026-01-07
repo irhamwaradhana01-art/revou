@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="diskon"/>
+        <attribute name="authors" value="ASUS TUF"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-01-07 08.14.59 PM"/>
+        <attribute name="created" value="QVNVUyBUVUY7SVJIQU1XQVJBREhBTkE7MjAyNi0wMS0wNzswNy4wNy4xNyBQTTsyODYz"/>
+        <attribute name="edited" value="QVNVUyBUVUY7SVJIQU1XQVJBREhBTkE7MjAyNi0wMS0wNzswOC4xNC41OSBQTTsyOzI5Nzc="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="namapembeli" type="String" array="False" size=""/>
+            <output expression="&quot;Masukkan jumlah pembeli &quot;" newline="True"/>
+            <declare name="jumlahPembeli, i, jumlahBuku, hitungDiskonKecil, hitungDiskonBesar" type="Integer" array="False" size=""/>
+            <input variable="jumlahPembeli"/>
+            <declare name="hargaPerBuku, hargaAkhir, totalPendapatan, rataRata, seratusPertama, seratusKedua, sisaBuku" type="Real" array="False" size=""/>
+            <assign variable="hargaPerBuku" expression="5000"/>
+            <assign variable="totalPendapatan" expression="0"/>
+            <assign variable="hitungDiskonKecil" expression="0"/>
+            <assign variable="hitungDiskonBesar" expression="0"/>
+            <for variable="i" start="1" end="jumlahpembeli" direction="inc" step="1">
+                <output expression="&quot;Masukkan nama pembeli ke-&quot; &amp; i" newline="True"/>
+                <input variable="namapembeli"/>
+                <output expression="&quot;Masukkan jumlah buku untuk &quot; &amp; namaPembeli" newline="True"/>
+                <input variable="jumlahBuku"/>
+                <if expression="jumlahbuku &lt;=100">
+                    <then>
+                        <assign variable="hargaAkhir" expression="jumlahBuku * hargaPerBuku"/>
+                    </then>
+                    <else>
+                        <if expression="jumlahBuku &lt;= 200">
+                            <then>
+                                <assign variable="seratusPertama" expression="100 * hargaPerBuku * 0.95"/>
+                                <assign variable="sisaBuku" expression="(jumlahBuku - 100) * hargaPerBuku * 0.85"/>
+                                <assign variable="hargaAkhir" expression="seratusPertama + sisaBuku"/>
+                                <assign variable="hitungDiskonKecil" expression="hitungDiskonKecil + 1"/>
+                            </then>
+                            <else>
+                                <assign variable="seratusPertama" expression="100 * hargaPerBuku * 0.93"/>
+                                <assign variable="seratusKedua" expression="100 * hargaPerBuku * 0.83"/>
+                                <assign variable="sisaBuku" expression="(jumlahBuku - 200) * hargaPerBuku * 0.73"/>
+                                <assign variable="hargaAkhir" expression="seratusPertama + seratusKedua + sisaBuku"/>
+                                <assign variable="hitungDiskonBesar" expression="hitungDiskonBesar + 1"/>
+                            </else>
+                        </if>
+                        <assign variable="totalPendapatan" expression="totalPendapatan + hargaAkhir"/>
+                        <output expression="&quot;Pembeli: &quot; &amp; namaPembeli &amp; &quot; | Total Harga: Rp &quot; &amp; hargaAkhir" newline="True"/>
+                    </else>
+                </if>
+            </for>
+            <assign variable="RataRata" expression="totalPendapatan / jumlahPembeli"/>
+            <output expression="&quot;Total Pendapatan Seluruhnya: Rp &quot; &amp; totalPendapatan" newline="True"/>
+            <output expression="&quot;Rata-rata Pendapatan per Pembeli: Rp &quot; &amp; rataRata" newline="True"/>
+            <output expression="&quot;Jumlah Pembeli Diskon Kecil: &quot; &amp; hitungDiskonKecil &amp; &quot; orang&quot;" newline="True"/>
+            <output expression="&quot;Jumlah Pembeli Diskon Besar: &quot; &amp; hitungDiskonBesar &amp; &quot; orang&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
